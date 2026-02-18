@@ -1,0 +1,163 @@
+/* HeroVideo.module.css */
+:root {
+    --hero-overlay: rgba(0, 0, 0, 0.5);
+    --hero-overlay1: #e9e2e2;
+    --text-white: #ffffff;
+
+    --font-leading-display: 1.1;
+    --font-leading-tight: 1.25;
+    --font-leading-normal: 1.5;
+    --font-leading-loose: 1.8;
+
+    --duration-sm: 200ms;
+    --duration-md: 300ms;
+
+    /* The "Secret Sauce": A smooth entrance/exit curve */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.heroContainer {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Full screen height */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & .backgroundVideo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+    }
+
+    & .overlay {
+        position: absolute;
+        inset: 0;
+        background: var(--hero-overlay1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Centers logo, text, and button */
+        gap: 3.5rem;
+        /* Consistent vertical rhythm */
+        max-width: 900px;
+
+        & .heroLogo {
+            max-width: 310px;
+            /* Control the size of your Rockside logo */
+            height: auto;
+            border-radius: 2px;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+            /* Makes logo pop off video */
+
+            @media (max-width: 768px) {
+                max-width: 250px;
+                /* Responsive resizing */
+            }
+        }
+
+        & .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-white);
+            line-height: var(--font-leading-normal);
+            opacity: 0.9;
+            /* Optical leading: slightly tighter for large subtitles */
+            letter-spacing: 0.01em;
+        }
+    }
+
+    /* Redefining your button mix */
+    .ctaButton.textAdvanced {
+        /* Using your 4.25rem size safely inside a button */
+        /* font-size: clamp(1.2rem, 5vw, 1.5rem); */
+        font-size: 1.35em;
+        ;
+        /* Scaled down for button usability */
+        line-height: 1;
+        letter-spacing: 0.04em;
+        /* text-transform: uppercase; */
+
+        /* Adding a glassmorphism touch to the gray button */
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        background: rgba(88, 88, 90, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
+:root {
+    /* Standard "Fast" duration for UI interactions */
+    --duration-sm: 200ms;
+    --duration-md: 300ms;
+
+    /* The "Secret Sauce": A smooth entrance/exit curve */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* button.module.css */
+
+.ctaButton {
+    padding: 1.5rem 3.5rem;
+    background-color: #58585a;
+    /* Base color */
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+
+    /* Explicitly transition the background-color */
+    transition:
+        transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 0.3s ease;
+
+    /* Using & to ensure the hover is attached to this specific class */
+    &:hover {
+        background-color: #8c9097 !important;
+        /* !important only if other global styles interfere */
+        transform: translateY(-2px);
+    }
+}
+
+.textAdvanced {
+    /* Only put typography here, NO background colors */
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+}
+
+.text-advanced {
+    font-size: 4.25rem;
+    font-weight: 600;
+    font-variant: normal;
+
+    /* Apply the display-specific leading */
+    line-height: var(--font-leading-display);
+
+    /* Advanced: Optical Kerning 
+     Large text often looks like the letters are too far apart.
+     Reducing letter-spacing slightly makes it look 'premium'. */
+    letter-spacing: -0.02em;
+
+    max-width: 65ch;
+
+    /* Performance: Optimize for legibility */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}

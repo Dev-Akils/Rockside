@@ -1,0 +1,53 @@
+.entranceWrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a; /* Dark backdrop */
+    overflow: hidden;
+}
+
+.modal {
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ctaButton {
+    padding: 1rem 3rem;
+    background-color: #58585a; /* Default grey */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    /* Use 'all' or specific properties for transition */
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+
+    &:hover {
+        background-color: #9fa3a9 !important; /* Forces the color change */
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+        transform: translateY(-1px);
+    }
+}
+
+.ctaButtonSecondary {
+    /* Compose styles from the main button but change color */
+    composes: ctaButton;
+    background-color: transparent;
+    border: 1px solid #58585a;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+    }
+}
